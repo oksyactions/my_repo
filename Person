@@ -1,0 +1,91 @@
+<?php
+
+class Person {
+private $name;
+private $lastname;
+private $age;
+private $hp;
+private $mother;
+private $father;
+private $grandmotherOlga;
+private $grandfatherOlga;
+private $grandmotherAlex;
+private $grandfatherAlex;
+
+
+function __construct($name,$lastname,$age,$mother=null,$father=null,$grandmotherOlga=null,$grandmotherAlex=null,$grandfatherOlga=null,$grandfatherAlex=null )
+  {
+   $this->name = $name; 
+   $this->hp=100;
+   $this->lastname=$lastname;
+   $this->age=$age;
+   $this->mother=$mother;
+   $this->father=$father;
+   $this->grandmotherOlga=$grandmotherOlga;
+   $this->grandfatherOlga=$grandfatherOlga;
+   $this->grandmotherAlex=$grandmotherAlex;
+   $this->grandfatherAlex=$grandfatherAlex;
+  }
+
+  function sayHi($name) {
+    return "Hi $name, I'm" . $this->name;
+  }
+function setHp($hp){
+if ($this->hp + $hp >=100) $this->hp=100;
+else $this->hp =$this->hp + $hp;
+
+}
+function getHp(){
+    return $this->hp;
+}
+
+
+function getName(){
+return $this->name;
+}
+function getMother(){
+    return $this -> mother;
+}
+function getFather(){
+    return $this -> father;
+}
+function getGrandmotherOlga(){
+    return $this -> grandmotherOlga;
+    
+}
+
+function getGrandfatherOlga(){
+    return $this -> grandfatherOlga;
+}
+
+function getGrandmotherAlex(){
+    return $this -> grandmotherAlex;
+}
+
+function getGrandfatherAlex(){
+    return $this -> grandfatherAlex;
+}
+
+function getInfo(){
+    return "
+    <h2>A few words about myself </h2><br>"."My name is:".$this->getName().
+    "<br>My father is:" . $this->getFather()->getName().
+    "<br>My mother is:" . $this->getMother()->getName().
+    "<br> My grandmother by mother side is:".$this->getGrandmotherOlga()->getName().
+    "<br> My grandfather by mother side is:".$this->getGrandfatherOlga()->getName().
+    "<br> My grandmother by father side is:".$this->getGrandmotherAlex()->getName().
+    "<br> My grandfather by father side is:".$this->getGrandfatherAlex()->getName();
+}
+}
+
+$igor = new Person ("Igor", "Petrov",78);
+$marina = new Person ("Marina", "Petrova",78);
+$sergey =new Person ("Sergey", "Ivanov",70);
+$galina= new Person ("Galina", "Ivanova",72);
+$alex = new Person("Alex", "Ivanov", 42);
+$olga = new Person("Olga", "Ivanov", 42);
+$valera = new Person ("Valera", "Ivanov",18, $olga, $alex,$marina,$galina,$igor,$sergey);
+
+echo $valera->getInfo();
+ 
+ ?>
